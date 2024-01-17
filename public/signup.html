@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Median - Sign Up</title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<p class=message style="color:red"></p>
+		<div class="login-page">
+			<div class="form">
+				<form class="register-form" method=post action="/signup.html">
+					<input type="text" placeholder="username" name="username">
+					<input type="password" placeholder="password" name="password">
+					<input type="email" placeholder="email" name="email">
+					<input type="hidden" name="formtype" value="signup">
+					<button>Create account</button>
+					<p class="message">Already have an account? <a href="#">Login</a></p>
+				</form>
+				<form class="login-form" method=post action="/signup.html">
+						<input type="text" placeholder="User Name" name="username">
+						<input type="password" placeholder="Password" name="password">
+						<input type="hidden" name="formtype" value="login">
+					<button>Log in</button>
+						<p class="message">Don't have an account? <a href="#">Sign up </a></p>
+				</form>
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+		<script>
+			$('.message a').click(function(){
+			$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+			});
+
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
+
+			if (urlParams.get('err') == "0") {
+				document.querySelector(".message").innerText = "Error: Username already exists."
+			} else if (urlParams.get('err') == "1") {
+				document.querySelector(".message").innerText = "Error: This account does not exist. Please sign up"
+			} else if (urlParams.get('err') == "2") {
+				document.querySelector(".message").innerText = "Error: Invalid credentials. Please try logging in with a different username or password."
+			}
+		</script>
+		</script>
+	</body>
+</html>
