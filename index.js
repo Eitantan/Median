@@ -34,8 +34,9 @@ const appFiller = require("./app.filler.js")
 const e = require("./encrypt.js")
 const debateFiller = require("./debate.filler.js")
 
-const { inject } = require("@vercel/analytics")
-inject()
+const vercelAnalytics = require("@vercel/analytics")
+console.log(vercelAnalytics)
+vercelAnalytics.inject()
 
 String.prototype.encrypt = e
 
