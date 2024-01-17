@@ -34,6 +34,9 @@ const appFiller = require("./app.filler.js")
 const e = require("./encrypt.js")
 const debateFiller = require("./debate.filler.js")
 
+import { inject } from "@vercel/analytics"
+inject()
+
 String.prototype.encrypt = e
 
 let app = express();
