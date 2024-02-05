@@ -24,7 +24,7 @@ let reports = []
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post("/signup.html", (req, res) => {
+app.post("/signupmidpoint", (req, res) => {
   if (req.body.formtype === "signup") {
     if (users.data[req.body.username] !== undefined) {
       res.redirect("/signup.html?err=0");

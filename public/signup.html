@@ -10,7 +10,7 @@
 		<p class=message style="color:red"></p>
 		<div class="login-page">
 			<div class="form">
-				<form class="register-form" method=post action="/signup.html">
+				<form class="register-form" method=post action="/signupmidpoint">
 					<input type="text" placeholder="username" name="username">
 					<input type="password" placeholder="password" name="password">
 					<input type="email" placeholder="email" name="email">
@@ -18,7 +18,7 @@
 					<button>Create account</button>
 					<p class="message">Already have an account? <a href="#">Login</a></p>
 				</form>
-				<form class="login-form" method=post action="/signup.html">
+				<form class="login-form" method=post action="/signupmidpoint">
 						<input type="text" placeholder="User Name" name="username">
 						<input type="password" placeholder="Password" name="password">
 						<input type="hidden" name="formtype" value="login">
@@ -43,6 +43,8 @@
 				document.querySelector(".message").innerText = "Error: This account does not exist. Please sign up"
 			} else if (urlParams.get('err') == "2") {
 				document.querySelector(".message").innerText = "Error: Invalid credentials. Please try logging in with a different username or password."
+			} else if (urlParams.get('su') == "0") {
+                $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
 			}
 		</script>
 		</script>
