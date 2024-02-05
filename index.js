@@ -24,6 +24,10 @@ let reports = []
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get("/signupmidpoint", (req, res) => {
+    res.send("signupmidpoint")
+})
+
 app.post("/signupmidpoint", (req, res) => {
   if (req.body.formtype === "signup") {
     if (users.data[req.body.username] !== undefined) {
@@ -147,6 +151,10 @@ app.get("/getchat/:debateID", (req, res)=>{
 	} else {
 		res.json({code: 0, contents: chatRooms[req.params.debateID]})
 	}
+})
+
+app.use((req, res, next) => {
+    res.status(404).sendFile("/public/404.html")
 })
 
 app.listen(3000);
