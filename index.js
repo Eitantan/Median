@@ -60,13 +60,9 @@ app.post("/signupmidpoint", (req, res) => {
       users.data[req.body.username].expireTime =
         new Date().getTime() + EIGHT_HOURS;
     }
-  }
+    }
+  res.send("hi")
 });
-
-
-app.get("/signupmidpoint", (req, res) => {
-    res.send("signupmidpoint")
-})
 
 app.get("/app", (req, res) => {
   const sessionID = req.query.sessionID;
