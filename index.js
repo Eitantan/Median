@@ -24,10 +24,6 @@ let reports = []
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/signupmidpoint", (req, res) => {
-    res.send("signupmidpoint")
-})
-
 app.post("/signupmidpoint", (req, res) => {
   if (req.body.formtype === "signup") {
     if (users.data[req.body.username] !== undefined) {
@@ -66,6 +62,11 @@ app.post("/signupmidpoint", (req, res) => {
     }
   }
 });
+
+
+app.get("/signupmidpoint", (req, res) => {
+    res.send("signupmidpoint")
+})
 
 app.get("/app", (req, res) => {
   const sessionID = req.query.sessionID;
