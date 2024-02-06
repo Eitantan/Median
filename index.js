@@ -45,23 +45,22 @@ app.post("/signupmidpoint", (req, res) => {
       res.redirect("/?mes=0");
     }
   } else if (req.body.formtype === "login") {
-    if (users.data[req.body.username] == undefined) {
-      res.redirect("/signup.html?err=1");
-    } else if (
-      users.data[req.body.username].password !== req.body.password.encrypt(key)
-    ) {
-      res.redirect("/signup.html?err=2");
-    } else {
-      var sessionID = randomstring.generate(25);
-      users.data[req.body.username].currentSessionID = sessionID;
+        if (users.data[req.body.username] == undefined) {
+          res.redirect("/signup.html?err=1");
+        } else if (
+          users.data[req.body.username].password !== req.body.password.encrypt(key)
+        ) {
+          res.redirect("/signup.html?err=2");
+        } else {
+          var sessionID = randomstring.generate(25);
+          users.data[req.body.username].currentSessionID = sessionID;
 
-      res.redirect("/app?sessionID=" + sessionID);
-      mapSessionIDs[sessionID] = req.body.username;
-      users.data[req.body.username].expireTime =
-        new Date().getTime() + EIGHT_HOURS;
-    }
-    }
-  res.send("hi")
+          res.redirect("/app?sessionID=" + sessionID);
+          mapSessionIDs[sessionID] = req.body.username;
+          users.data[req.body.username].expireTime =
+            new Date().getTime() + EIGHT_HOURS;
+        }
+  }
 });
 
 app.get("/app", (req, res) => {
